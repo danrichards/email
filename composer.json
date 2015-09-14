@@ -1,5 +1,5 @@
 {
-  "name": "danrichards/email",
+  "name": "dan/email",
   "description": "A simple email implementation I use in many of my Laravel ~5.1 packages.",
   "license": "MIT",
   "keywords": ["laravel", "email", "mailgun", "jobs", "queue"],

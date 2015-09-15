@@ -48,6 +48,32 @@ return [
     |
     */
 
-	'theme' => 'simples'
+	'theme' => 'simples',
+
+    'globals' => [
+        'app' => 'My Awesome App',
+        'logo' => [
+            'image' => 'img/logo.png',
+            'href' => 'http://myapp.com/',
+            'link' => 'Logo click here'
+        ],
+        'color' => [
+            'href' => '#0a8cce'
+        ],
+        'buttons' => [
+            [
+                'image' => 'img/facebook.png',
+                'href' => 'https://facebook.com/myapp/'
+            ],
+            [
+                'image' => 'img/twitter.png',
+                'href' => 'https://twitter.com/myapp/'
+            ],
+            [
+                'image' => 'img/linked.png',
+                'href' => 'https://linked.com/myapp/'
+            ]
+        ]
+    ]
 
 ];

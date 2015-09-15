@@ -335,8 +335,8 @@
                                                     <!-- Spacing -->
                                                     <!-- read more -->
                                                     <tr>
-                                                        <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cce;  text-align:center; line-height: 20px;" st-title="3col-readmore3">
-                                                            <a href="#" style="text-decoration:none; color: #0a8cce; ">Read More</a>
+                                                        <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: {{$color['href']}};  text-align:center; line-height: 20px;" st-title="3col-readmore3">
+                                                            <a href="#" style="text-decoration:none; color: {{$color['href']}}; ">Read More</a>
                                                         </td>
                                                     </tr>
                                                     <!-- end of read more -->
@@ -442,8 +442,8 @@
                                                                     <td width="100%" height="20"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cce; text-align:center;" st-title="2colreadmore1">
-                                                                        <a href="#" style="text-decoration:none; color:#0a8cce;">Read More</a>
+                                                                    <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: {{$color['href']}}; text-align:center;" st-title="2colreadmore1">
+                                                                        <a href="#" style="text-decoration:none; color:{{$color['href']}};">Read More</a>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>
@@ -504,8 +504,8 @@
                                                                     <td width="100%" height="20"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cce; text-align:center;" st-title="2colreadmore2">
-                                                                        <a href="#" style="text-decoration:none; color:#0a8cce;">Read More</a>
+                                                                    <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: {{$color['href']}}; text-align:center;" st-title="2colreadmore2">
+                                                                        <a href="#" style="text-decoration:none; color:{{$color['href']}};">Read More</a>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>
@@ -658,7 +658,7 @@
                             <tbody>
                             <tr>
                                 <td align="center" valign="middle" style="font-family: Helvetica, arial, sans-serif; font-size: 14px;color: #666666" st-content="postfooter">
-                                    Click here to <a href="#" style="text-decoration: none; color: #0a8cce">Unsubscribe</a>
+                                    Click here to <a href="#" style="text-decoration: none; color: {{$color['href']}}">Unsubscribe</a>
                                 </td>
                             </tr>
                             <!-- Spacing -->

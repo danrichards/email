@@ -1,3 +1,4 @@
+@if ($header)
 <!-- Start of preheader -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="preheader" >
     <tbody>
@@ -20,39 +21,30 @@
                                         <tbody>
                                         <tr>
                                             <td align="left" valign="middle" style="font-family: Helvetica, arial, sans-serif; font-size: 14px;color: #666666" st-content="viewonline" class="mobile-hide">
-                                                <!-- View Online Link -->
+                                                @if ($online)
+                                                    <a href="{{$online->href}}" style="text-decoration: none; color: #666666">{{$online->link}}</a>
+                                                @endif
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
                                     <table width="100" align="right" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                        @if (config('email::buttons'))
                                         <tbody>
                                         <tr>
+                                            @foreach ($buttons as $button)
                                             <td width="30" height="30" align="right">
                                                 <div class="imgpop">
-                                                    <a target="_blank" href="#">
-                                                        <img src="img/facebook.png" alt="" border="0" width="30" height="30" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                    <a target="_blank" href="{{$button['href']}}">
+                                                        <img src="{{$button['image']}}" alt="" border="0" width="30" height="30" style="display:block; border:none; outline:none; text-decoration:none;">
                                                     </a>
                                                 </div>
                                             </td>
                                             <td align="left" width="20" style="font-size:1px; line-height:1px;">&nbsp;</td>
-                                            <td width="30" height="30" align="center">
-                                                <div class="imgpop">
-                                                    <a target="_blank" href="#">
-                                                        <img src="img/twitter.png" alt="" border="0" width="30" height="30" style="display:block; border:none; outline:none; text-decoration:none;">
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td align="left" width="20" style="font-size:1px; line-height:1px;">&nbsp;</td>
-                                            <td width="30" height="30" align="center">
-                                                <div class="imgpop">
-                                                    <a target="_blank" href="#">
-                                                        <img src="img/linkedin.png" alt="" border="0" width="30" height="30" style="display:block; border:none; outline:none; text-decoration:none;">
-                                                    </a>
-                                                </div>
-                                            </td>
+                                            @endforeach
                                         </tr>
                                         </tbody>
+                                        @endif
                                     </table>
                                 </td>
                             </tr>
@@ -72,3 +64,4 @@
     </tbody>
 </table>
 <!-- End of preheader -->
+@endif

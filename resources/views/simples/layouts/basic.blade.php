@@ -2,55 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     @include('mailstage::partials.head.meta')
-    <title>tag.network - @yield('title')</title>
+    <title>{{$app}} - @yield('title')</title>
     @include('mailstage::partials.head.style')
 </head>
 <body>
 
-@include('mailstage::partials.header-alpha)
-@include('mailstage::partials.header-bravo')
+    @include('mailstage::partials.header-alpha')
+    @include('mailstage::partials.header-bravo')
 
-<!-- Start of main-banner -->
-<table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="banner">
-    <tbody>
-    <tr>
-        <td>
-            <table width="600" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
-                <tbody>
-                <tr>
-                    <td width="100%">
-                        <table width="600" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidth">
-                            <tbody>
-                            <tr>
-                                <!-- start of image -->
-                                <td align="center" st-image="banner-image">
-                                    <div class="imgpop">
-                                        @yield('banner')
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- end of image -->
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<!-- End of main-banner -->
-@include('mailstage::partials.separator-spacing')
+    @include('mailstage::partials.masthead')
 
-@if ($h1)
-    @include('mailstage::partials.h1)
-    @include('mailstage::partials.separator-line')
-@endif
+    @if ($rows)
+        @include('mailstage::partials.excerpt', ['row' => $rows[0]])
+    @endif
 
-@yield('content')
+    @yield('content')
 
-@include('mailstage::partials.footer')
+    @include('mailstage::partials.footer')
 
 </body>
 </html>

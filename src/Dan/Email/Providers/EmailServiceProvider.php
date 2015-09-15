@@ -1,6 +1,6 @@
 <?php
 
-namespace Dan\MailStage\Providers;
+namespace Dan\Email\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

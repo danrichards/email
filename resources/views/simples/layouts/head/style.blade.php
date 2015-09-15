@@ -12,20 +12,20 @@
     p {margin: 0px 0px !important;}
     table td {border-collapse: collapse;}
     table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
-    a {color: #0a8cce;text-decoration: none;text-decoration:none!important;}
+    a {color: {{$color['href']}};text-decoration: none;text-decoration:none!important;}
     /*STYLES*/
     table[class=full] { width: 100%; clear: both; }
     /*IPAD STYLES*/
     @media only screen and (max-width: 640px) {
         a[href^="tel"], a[href^="sms"] {
             text-decoration: none;
-            color: #0a8cce; /* or whatever your want */
+            color: {{$color['href']}}; /* or whatever your want */
             pointer-events: none;
             cursor: default;
         }
         .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
             text-decoration: default;
-            color: #0a8cce !important;
+            color: {{$color['href']}} !important;
             pointer-events: auto;
             cursor: default;
         }
@@ -40,13 +40,13 @@
     @media only screen and (max-width: 480px) {
         a[href^="tel"], a[href^="sms"] {
             text-decoration: none;
-            color: #0a8cce; /* or whatever your want */
+            color: {{$color['href']}}; /* or whatever your want */
             pointer-events: none;
             cursor: default;
         }
         .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
             text-decoration: default;
-            color: #0a8cce !important;
+            color: {{$color['href']}} !important;
             pointer-events: auto;
             cursor: default;
         }

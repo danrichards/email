@@ -11,7 +11,9 @@
                             <tbody>
                             <tr>
                                 <td align="center" valign="middle" style="font-family: Helvetica, arial, sans-serif; font-size: 14px;color: #666666" st-content="postfooter">
-                                    Click here to <a href="#" style="text-decoration: none; color: #0a8cce">Unsubscribe</a>
+                                    @if ($unsubscribe)
+                                        <a href="{{$unsubscribe->href}}" style="text-decoration: none; color: {{$color['href']}}">{{$unsubscribe->link}}</a>
+                                    @endif
                                 </td>
                             </tr>
                             <!-- Spacing -->

@@ -1,3 +1,4 @@
+@if ($row->heading)
 <!-- Start Full Text -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="full-text">
     <tbody>
@@ -21,12 +22,12 @@
                                         <!-- Title -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;" st-title="fulltext-heading">
-                                                {{$h1}}
+                                                {{$row->heading}}
                                             </td>
                                         </tr>
                                         <!-- End of Title -->
 
-                                        @if ($h1_content)
+                                        @if ($row->content)
 
                                         <!-- spacing -->
                                         <tr>
@@ -36,7 +37,7 @@
                                         <!-- content -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #666666; text-align:center; line-height: 30px;" st-content="fulltext-content">
-                                                {{$h1_content}}
+                                                {{$row->content}}
                                             </td>
                                         </tr>
 
@@ -63,3 +64,5 @@
     </tbody>
 </table>
 <!-- end of full text -->
+@include('mailstage::partials.separator-line')
+@endif

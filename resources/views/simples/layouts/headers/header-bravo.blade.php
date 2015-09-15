@@ -1,4 +1,4 @@
-
+@if ($logo)
 <!-- Start of header -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="header">
     <tbody>
@@ -23,9 +23,11 @@
                                         <tr>
                                             <td width="169" height="45" align="center">
                                                 <div class="imgpop">
+                                                    @if ($logo['href'])
                                                     <a target="_blank" href="#">
-                                                        <img src="img/logo.png" alt="" border="0" width="169" height="45" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                        <img src="{{$logo['image']}}" alt="{{$logo['link']}}" border="0" width="169" height="45" style="display:block; border:none; outline:none; text-decoration:none;">
                                                     </a>
+                                                    @endif
                                                 </div>
                                             </td>
                                         </tr>
@@ -50,3 +52,4 @@
     </tbody>
 </table>
 <!-- End of Header -->
+@endif

@@ -1,3 +1,9 @@
+<?php
+$left = $row[0];
+$middle = $row[1];
+$right = $row[2];
+?>
+@if($left || $middle || $right)
 <!-- 3 Start of Columns -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
     <tbody>
@@ -13,11 +19,14 @@
                                 <td>
                                     <!-- col 1 -->
                                     <table width="186" align="left" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                        @if ($left)
                                         <tbody>
                                         <!-- image 2 -->
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
-                                                <img src="img/icon1.png" alt="" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                @if ($left->image)
+                                                    <img src="{{$left->image}}" alt="{{$left->heading}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                @endif
                                             </td>
                                         </tr>
                                         <!-- end of image2 -->
@@ -34,7 +43,9 @@
                                                     <!-- title2 -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #666666; text-align:center; line-height: 24px;" st-title="3col-title1">
-                                                            Heading
+                                                            @if ($left->heading)
+                                                                {{$left->heading}}
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- end of title2 -->
@@ -46,8 +57,9 @@
                                                     <!-- content2 -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #889098; text-align:center; line-height: 24px;" st-content="3col-content1">
-                                                            Two lines of Locvrem Ipsum
-                                                            will just fit in here.
+                                                            @if ($left->content)
+                                                                {{$left->content}}
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- end of content2 -->
@@ -59,7 +71,9 @@
                                                     <!-- read more -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cd8;  text-align:center; line-height: 20px;" st-title="3col-readmore1" class="padding-bottom25">
-                                                            <a href="#" style="text-decoration:none; color: #0a8cd8; ">Read More</a>
+                                                            @if ($left->link)
+                                                            <a href="{{$left->href}}" style="text-decoration:none; color: #0a8cd8; ">{{$left->link}}</a>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- end of read more -->
@@ -69,6 +83,7 @@
                                         </tr>
                                         <!-- end of text content table -->
                                         </tbody>
+                                        @endif
                                     </table>
                                     <!-- spacing -->
                                     <table width="20" align="left" border="0" cellpadding="0" cellspacing="0" class="removeMobile">
@@ -81,11 +96,14 @@
                                     <!-- end of spacing -->
                                     <!-- col 2 -->
                                     <table width="186" align="left" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                        @if ($middle)
                                         <tbody>
                                         <!-- image 2 -->
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
-                                                <img src="img/icon1.png" alt="" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                @if ($middle->image)
+                                                    <img src="{{$middle->image}}" alt="" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                @endif
                                             </td>
                                         </tr>
                                         <!-- end of image2 -->
@@ -102,7 +120,9 @@
                                                     <!-- title2 -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #666666; text-align:center; line-height: 24px;" st-title="3col-title2">
-                                                            Heading
+                                                            @if ($middle->heading)
+                                                                {{$middle->heading}}
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- end of title2 -->
@@ -114,8 +134,9 @@
                                                     <!-- content2 -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #889098; text-align:center; line-height: 24px;" st-content="3col-content2">
-                                                            Two lines of Locvrem Ipsum
-                                                            will just fit in here.
+                                                            @if ($middle->content)
+                                                                {{$middle->content}}
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- end of content2 -->
@@ -127,7 +148,9 @@
                                                     <!-- read more -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cd8;  text-align:center; line-height: 20px;" st-title="3col-readmore2" class="padding-bottom25">
-                                                            <a href="#" style="text-decoration:none; color: #0a8cd8; ">Read More</a>
+                                                            @if ($middle->link)
+                                                                <a href="{{$middle->href}}" style="text-decoration:none; color: #0a8cd8; ">{{$middle->link}}</a>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- end of read more -->
@@ -137,6 +160,7 @@
                                         </tr>
                                         <!-- end of text content table -->
                                         </tbody>
+                                        @endif
                                     </table>
                                     <!-- end of col 2 -->
                                     <!-- spacing -->
@@ -150,11 +174,14 @@
                                     <!-- end of spacing -->
                                     <!-- col 3 -->
                                     <table width="186" align="right" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                        @if ($right)
                                         <tbody>
                                         <!-- image3 -->
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
-                                                <img src="img/icon1.png" alt="" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                @if ($right->image)
+                                                    <img src="{{$right->image}}" alt="{{$right->headline}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                @endif
                                             </td>
                                         </tr>
                                         <!-- end of image3 -->
@@ -171,7 +198,9 @@
                                                     <!-- title -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #666666; text-align:center; line-height: 24px;" st-title="3col-title3">
-                                                            Heading
+                                                            @if ($right->heading)
+                                                                {{$right->heading}}
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- end of title -->
@@ -183,8 +212,9 @@
                                                     <!-- content -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #889098; text-align:center; line-height: 24px;" st-content="3col-content3">
-                                                            Two lines of Locvrem Ipsum
-                                                            will just fit in here.
+                                                            @if ($right->content)
+                                                                {{$right->content}}
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- end of content -->
@@ -195,8 +225,10 @@
                                                     <!-- Spacing -->
                                                     <!-- read more -->
                                                     <tr>
-                                                        <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cce;  text-align:center; line-height: 20px;" st-title="3col-readmore3">
-                                                            <a href="#" style="text-decoration:none; color: #0a8cce; ">Read More</a>
+                                                        <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: {{$color['href']}};  text-align:center; line-height: 20px;" st-title="3col-readmore3">
+                                                            @if ($right->link)
+                                                                <a href="{{$right->href}}" style="text-decoration:none; color: {{$color['href']}}; ">{{$right->link}}</a>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- end of read more -->
@@ -206,6 +238,7 @@
                                         </tr>
                                         <!-- end of text content table -->
                                         </tbody>
+                                        @endif
                                     </table>
                                 </td>
                                 <!-- spacing -->

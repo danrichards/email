@@ -1,3 +1,8 @@
+<?php
+$left = $row[0];
+$right = $row[1];
+?>
+@if($left || $right)
 <!-- 2columns -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="2columns">
     <tbody>
@@ -11,6 +16,7 @@
                             <tbody>
                             <tr>
                                 <td>
+                                    @if($left)
                                     <!-- start of left column -->
                                     <table width="290" align="left" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
                                         <tbody>
@@ -27,7 +33,9 @@
                                                     <!-- image -->
                                                     <tr>
                                                         <td width="290" height="160" align="center" class="devicewidth">
-                                                            <img src="img/ipad.png" alt="" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
+                                                            @if ($left->image)
+                                                                <img src="{{$left->image}}" alt="{{$left->heading}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <!-- Content -->
@@ -40,7 +48,9 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #333333; line-height:24px;text-align:center;" st-title="2coltitle1">
-                                                                        2 Columns Heading
+                                                                        @if ($left->heading)
+                                                                            {{$left->heading}}
+                                                                        @endif
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -48,17 +58,21 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; line-height:24px; color: #666666; text-align:center;" st-conteent="2colcontent1">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius modtempor incididunt ut labore et dolore.
+                                                                        @if ($left->content)
+                                                                            {{$left->content}}
+                                                                        @endif
                                                                     </td>
                                                                 </tr>
+                                                                @if ($left->link)
                                                                 <tr>
                                                                     <td width="100%" height="20"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cce; text-align:center;" st-title="2colreadmore1">
-                                                                        <a href="#" style="text-decoration:none; color:#0a8cce;">Read More</a>
+                                                                    <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: {{$color['href']}}; text-align:center;" st-title="2colreadmore1">
+                                                                        <a href="{{$left->href}}" style="text-decoration:none; color:{{$color['href']}};">{{$left->link}}</a>
                                                                     </td>
                                                                 </tr>
+                                                                @endif
                                                                 </tbody>
                                                             </table>
                                                         </td>
@@ -73,6 +87,8 @@
                                         </tbody>
                                     </table>
                                     <!-- end of left column -->
+                                    @endif
+                                    @if($right)
                                     <!-- start of right column -->
                                     <table width="290" align="right" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
                                         <tbody>
@@ -89,7 +105,8 @@
                                                     <!-- image -->
                                                     <tr>
                                                         <td width="290" height="160" align="center" class="devicewidth">
-                                                            <img src="img/ipad.png" alt="" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
+                                                            @if ($right->image)
+                                                            <img src="{{$right->image}}" alt="{{$right->heading}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
                                                         </td>
                                                     </tr>
                                                     <!-- Content -->
@@ -102,7 +119,9 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #333333;line-height:24px; text-align:center;" st-title="2coltitle2">
-                                                                        2 Columns Heading
+                                                                        @if ($right->heading)
+                                                                            {{$right->heading}}
+                                                                        @endif
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -110,15 +129,19 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; line-height:24px; color: #666666; text-align:center;" st-content="2colcontent2">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius modtempor incididunt ut labore et dolore.
+                                                                        @if ($right->content)
+                                                                            {{$right->content}}
+                                                                        @endif
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width="100%" height="20"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cce; text-align:center;" st-title="2colreadmore2">
-                                                                        <a href="#" style="text-decoration:none; color:#0a8cce;">Read More</a>
+                                                                    <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: {{$color['href']}}; text-align:center;" st-title="2colreadmore2">
+                                                                        @if ($right->link)
+                                                                            <a href="{{$right->href}}" style="text-decoration:none; color:{{$color['href']}};">{{$right->link}}</a>
+                                                                        @endif
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>
@@ -135,6 +158,7 @@
                                         </tbody>
                                     </table>
                                     <!-- end of right column -->
+                                    @endif
                                 </td>
                             </tr>
                             <!-- Spacing -->
@@ -153,3 +177,4 @@
     </tbody>
 </table>
 <!-- end of 2 columns -->
+@endif

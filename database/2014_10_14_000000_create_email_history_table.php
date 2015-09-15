@@ -24,6 +24,7 @@ class CreateEmailHistoryTable extends Migration
             $table->mediumText('data')->nullable();
             $table->string('job', 255);
             $table->string('view', 255);
+            $table->dateTime('expires')->nullable();
             $table->timestamps();
         });
     }

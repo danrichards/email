@@ -1,3 +1,4 @@
+@if ($row)
 <!-- Start Full Text -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="full-text">
     <tbody>
@@ -14,14 +15,38 @@
                                 <td height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
                             </tr>
                             <!-- Spacing -->
+                            <!-- Optional image -->
+                            @if($row->image)
                             <tr>
                                 <td>
                                     <table width="560" align="center" cellpadding="0" cellspacing="0" border="0" class="devicewidthinner">
                                         <tbody>
+                                        <!-- Image -->
+                                        <tr>
+                                            <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;" st-title="fulltext-title">
+                                                @if($row->href)
+                                                    <img src="{{$row->image}}" alt="" />
+                                                @endif
+                                                <img src="{{$row->image}}" alt="{{$row->heading}}" />
+                                            </td>
+                                        </tr>
+                                        <!-- End of Image -->
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            @endif
+                            <!-- Optional image -->
+                            @if($row->heading || $row->content)
+                            <tr>
+                                <td>
+                                    <table width="560" align="center" cellpadding="0" cellspacing="0" border="0" class="devicewidthinner">
+                                        <tbody>
+                                        @if($row->heading)
                                         <!-- Title -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;" st-title="fulltext-title">
-                                                Your Awesome Heading
+                                                {{$row->heading}}
                                             </td>
                                         </tr>
                                         <!-- End of Title -->
@@ -30,13 +55,16 @@
                                             <td width="100%" height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
                                         </tr>
                                         <!-- End of spacing -->
+                                        @endif
+                                        @if($content)
                                         <!-- content -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #666666; text-align:center; line-height: 30px;" st-content="fulltext-content">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                {{$row->content}}
                                             </td>
                                         </tr>
                                         <!-- End of content -->
+                                        @endif
                                         </tbody>
                                     </table>
                                 </td>
@@ -46,6 +74,7 @@
                                 <td height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
                             </tr>
                             <!-- Spacing -->
+                            @endif
                             </tbody>
                         </table>
                     </td>
@@ -57,3 +86,4 @@
     </tbody>
 </table>
 <!-- end of full text -->
+@endif

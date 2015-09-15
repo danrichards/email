@@ -25,7 +25,7 @@ $right = $row[2];
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
                                                 @if ($left->image)
-                                                    <img src="{{$left->image}}" alt="{{$left->heading}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                    <img src="{{$img}}/{{$left->image}}" alt="{{$left->heading}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
                                                 @endif
                                             </td>
                                         </tr>
@@ -102,7 +102,7 @@ $right = $row[2];
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
                                                 @if ($middle->image)
-                                                    <img src="{{$middle->image}}" alt="" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                    <img src="{{$img}}/{{$middle->image}}" alt="" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
                                                 @endif
                                             </td>
                                         </tr>
@@ -180,7 +180,7 @@ $right = $row[2];
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
                                                 @if ($right->image)
-                                                    <img src="{{$right->image}}" alt="{{$right->headline}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                    <img src="{{$img}}/{{$right->image}}" alt="{{$right->headline}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
                                                 @endif
                                             </td>
                                         </tr>

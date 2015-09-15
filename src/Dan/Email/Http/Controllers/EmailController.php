@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 
 class EmailController extends Controller
 {
-
     function __construct()
     {
 
@@ -21,35 +20,44 @@ class EmailController extends Controller
      */
     public function emails($emailId, $token)
     {
-
+        print_r($emailId);
+        dd($token);
     }
 
     public function basic()
     {
-        $data = [
+        $data = array_merge(config('email.globals'), [
             'title' => 'Basic Sample',
-            'rows' => (object) [
-                'heading' => 'Excerpt',
-                'content' => 'A excerpt is really just rows() with one item.',
-                'masthead' => (object) [
-                    'image' => 'image/mac.png',
-                    'href' => 'http://www.example.com/'
+            'online' => (object) [
+                'href' => 'http://www.example.com/',
+                'link' => 'View Online'
+            ],
+            'masthead' => (object) [
+                'image' => 'banner.png',
+                'href' => 'http://www.example.com/'
+            ],
+            'rows' => [
+                (object) [
+                    'heading' => 'Excerpt',
+                    'content' => 'A excerpt is really just rows() with one item.'
                 ]
+            ],
+            'unsubscribe' => (object) [
+                'href' => 'http://www.example.com/',
+                'link' => 'Unsubscribe'
             ]
-        ];
+        ]);
 
-        return view("simples/sample-basic", $data);
+        return view("email::simples.sample-basic", $data);
     }
 
     public function normal()
     {
-
-        return view("simples/sample-normal", $data);
+//        return view("simples/sample-normal", $data);
     }
 
     public function violation()
     {
-
-        return view("simples/sample-violation", $data);
+//        return view("simples/sample-violation", $data);
     }
 }

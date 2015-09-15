@@ -39,7 +39,7 @@ return [
 
     'cleanup' => false,
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Theme
     |--------------------------------------------------------------------------
@@ -48,12 +48,22 @@ return [
     |
     */
 
-	'theme' => 'simples',
+    'theme' => 'simples',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Globals
+    |--------------------------------------------------------------------------
+    |
+    | Data that will be thrown into all of our views.
+    |
+    */
 
     'globals' => [
         'app' => 'My Awesome App',
+        'img' => url('assets/media/email/'),
         'logo' => [
-            'image' => 'img/logo.png',
+            'image' => 'logo.png',
             'href' => 'http://myapp.com/',
             'link' => 'Logo click here'
         ],
@@ -62,16 +72,16 @@ return [
         ],
         'buttons' => [
             [
-                'image' => 'img/facebook.png',
+                'image' => 'facebook.png',
                 'href' => 'https://facebook.com/myapp/'
             ],
             [
-                'image' => 'img/twitter.png',
+                'image' => 'twitter.png',
                 'href' => 'https://twitter.com/myapp/'
             ],
             [
-                'image' => 'img/linked.png',
-                'href' => 'https://linked.com/myapp/'
+                'image' => 'linkedin.png',
+                'href' => 'https://linkedin.com/myapp/'
             ]
         ]
     ]

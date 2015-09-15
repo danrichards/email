@@ -34,7 +34,7 @@ $right = $row[1];
                                                     <tr>
                                                         <td width="290" height="160" align="center" class="devicewidth">
                                                             @if ($left->image)
-                                                                <img src="{{$left->image}}" alt="{{$left->heading}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
+                                                                <img src="{{$img}}/{{$left->image}}" alt="{{$left->heading}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
                                                             @endif
                                                         </td>
                                                     </tr>
@@ -106,7 +106,7 @@ $right = $row[1];
                                                     <tr>
                                                         <td width="290" height="160" align="center" class="devicewidth">
                                                             @if ($right->image)
-                                                            <img src="{{$right->image}}" alt="{{$right->heading}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
+                                                            <img src="{{$img}}/{{$right->image}}" alt="{{$right->heading}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
                                                         </td>
                                                     </tr>
                                                     <!-- Content -->

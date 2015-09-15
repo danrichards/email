@@ -64,5 +64,5 @@
     </tbody>
 </table>
 <!-- end of full text -->
-@include('mailstage::partials.separator-line')
+@include('email::simples.partials.separator-line')
 @endif

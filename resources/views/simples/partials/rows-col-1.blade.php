@@ -25,9 +25,9 @@
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;" st-title="fulltext-title">
                                                 @if($row->href)
-                                                    <img src="{{$row->image}}" alt="" />
+                                                    <img src="{{$img}}/{{$row->image}}" alt="" />
                                                 @endif
-                                                <img src="{{$row->image}}" alt="{{$row->heading}}" />
+                                                <img src="{{$img}}/{{$row->image}}" alt="{{$row->heading}}" />
                                             </td>
                                         </tr>
                                         <!-- End of Image -->

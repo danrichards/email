@@ -15,9 +15,9 @@
                                 <td align="center" st-image="banner-image">
                                     <div class="imgpop">
                                         @if ($masthead->href)
-                                            <a target="_blank" href="{{$masthead->href}}"><img width="600" border="0" height="300" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;" src="{{$masthead->image}}" class="banner"></a>
+                                            <a target="_blank" href="{{$masthead->href}}"><img width="600" border="0" height="300" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;" src="{{$img}}/{{$masthead->image}}" class="banner"></a>
                                         @else
-                                            <img width="600" border="0" height="300" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;" src="{{$masthead->image}}" class="banner">
+                                            <img width="600" border="0" height="300" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;" src="{{$img}}/{{$masthead->image}}" class="banner">
                                         @endif
                                     </div>
                                 </td>
@@ -34,5 +34,5 @@
     </tbody>
 </table>
 <!-- End of main-banner -->
-@include('mailstage::partials.separator-line')
+@include('email::simples.partials.separator-line')
 @endif

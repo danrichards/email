@@ -1,3 +1,5 @@
+@extends('email::simples.layouts.basic')
+
 @section ('content')
     <p>
         This is the most basic layout. All you need to do is specify a content

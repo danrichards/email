@@ -7,30 +7,30 @@
 </head>
 <body>
 
-    @include('mailstage::partials.header-alpha)
-    @include('mailstage::partials.header-bravo')
+    @include('email::simples.layouts.headers.alpha')
+    @include('email::simples.layouts.headers.bravo')
 
-    @include('mailstage::partials.masthead')
+    @include('email::simples.partials.masthead')
 
     @if ($rows)
         @foreach ($rows as $row)
 
             @if (array_key_exists('special', $row))
-                @include("mailstage::partials.special.".$row->partial, ['row' => $row->data])
+                @include("email::simples.partials.special.".$row->partial, ['row' => $row->data])
             @elseif(count($row) == 1)
-                @include("mailstage::partials.row-col-1", ['row' => $row->data])
+                @include("email::simples.partials.row-col-1", ['row' => $row->data])
             @elseif(count($row) == 2)
-                @include("mailstage::partials.row-col-2", ['row' => $row->data])
+                @include("email::simples.partials.row-col-2", ['row' => $row->data])
             @elseif(count($row) == 3)
-                @include("mailstage::partials.row-col-3", ['row' => $row->data])
+                @include("email::simples.partials.row-col-3", ['row' => $row->data])
             @endif
 
-            @include('mailstage::partials.separator-line')
+            @include('email::simples.partials.separator-line')
 
         @endforeach
     @endif
 
-    @include('mailstage::partials.footer')
+    @include('email::simples.layouts.footers.default')
 
 </body>
 </html>

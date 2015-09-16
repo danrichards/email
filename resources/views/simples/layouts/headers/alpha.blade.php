@@ -1,4 +1,4 @@
-@if ($online)
+@if (isset($online) || isset($buttons))
 <!-- Start of preheader -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="preheader" >
     <tbody>
@@ -17,6 +17,7 @@
                             <!-- Spacing -->
                             <tr>
                                 <td>
+                                    @if (isset($online))
                                     <table width="100" align="left" border="0" cellpadding="0" cellspacing="0">
                                         <tbody>
                                         <tr>
@@ -28,6 +29,8 @@
                                         </tr>
                                         </tbody>
                                     </table>
+                                    @endif
+                                    @if (isset($buttons))
                                     <table width="100" align="right" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
                                         <tbody>
                                         <tr>
@@ -44,6 +47,7 @@
                                         </tr>
                                         </tbody>
                                     </table>
+                                    @endif
                                 </td>
                             </tr>
                             <!-- Spacing -->

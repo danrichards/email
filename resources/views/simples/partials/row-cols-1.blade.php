@@ -1,5 +1,5 @@
-@if ($row)
-<!-- Start Full Text -->
+@if (isset($row))
+<!-- 1column -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="full-text">
     <tbody>
     <tr>
@@ -16,7 +16,7 @@
                             </tr>
                             <!-- Spacing -->
                             <!-- Optional image -->
-                            @if($row->image)
+                            @if (isset($row->image))
                             <tr>
                                 <td>
                                     <table width="560" align="center" cellpadding="0" cellspacing="0" border="0" class="devicewidthinner">
@@ -24,10 +24,10 @@
                                         <!-- Image -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;" st-title="fulltext-title">
-                                                @if($row->href)
-                                                    <img src="{{$img}}/{{$row->image}}" alt="" />
+                                                @if(isset($row->href))
+                                                    <img src="{{$img}}/{{$row->image}}" />
                                                 @endif
-                                                <img src="{{$img}}/{{$row->image}}" alt="{{$row->heading}}" />
+                                                <img src="{{$img}}/{{$row->image}}" />
                                             </td>
                                         </tr>
                                         <!-- End of Image -->
@@ -37,12 +37,12 @@
                             </tr>
                             @endif
                             <!-- Optional image -->
-                            @if($row->heading || $row->content)
+                            @if (isset($row->heading) || isset($row->content))
                             <tr>
                                 <td>
                                     <table width="560" align="center" cellpadding="0" cellspacing="0" border="0" class="devicewidthinner">
                                         <tbody>
-                                        @if($row->heading)
+                                        @if (isset($row->heading))
                                         <!-- Title -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;" st-title="fulltext-title">
@@ -56,7 +56,7 @@
                                         </tr>
                                         <!-- End of spacing -->
                                         @endif
-                                        @if($content)
+                                        @if (isset($row->content))
                                         <!-- content -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #666666; text-align:center; line-height: 30px;" st-content="fulltext-content">
@@ -85,5 +85,6 @@
     </tr>
     </tbody>
 </table>
-<!-- end of full text -->
+<!-- end of 1column -->
+@include('email::simples.partials.separator-line')
 @endif

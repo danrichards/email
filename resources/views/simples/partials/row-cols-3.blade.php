@@ -1,7 +1,7 @@
 <?php
-$left = $row[0];
-$middle = $row[1];
-$right = $row[2];
+$left = array_key_exists(0, $row) ? $row[0] : false;
+$middle = array_key_exists(1, $row) ? $row[1] : false;
+$right = array_key_exists(2, $row) ? $row[2] : false;
 ?>
 @if($left || $middle || $right)
 <!-- 3 Start of Columns -->
@@ -24,8 +24,8 @@ $right = $row[2];
                                         <!-- image 2 -->
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
-                                                @if ($left->image)
-                                                    <img src="{{$img}}/{{$left->image}}" alt="{{$left->heading}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                @if (isset($left->image))
+                                                    <img src="{{$img}}/{{$left->image}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
                                                 @endif
                                             </td>
                                         </tr>
@@ -43,7 +43,7 @@ $right = $row[2];
                                                     <!-- title2 -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #666666; text-align:center; line-height: 24px;" st-title="3col-title1">
-                                                            @if ($left->heading)
+                                                            @if (isset($left->heading))
                                                                 {{$left->heading}}
                                                             @endif
                                                         </td>
@@ -57,7 +57,7 @@ $right = $row[2];
                                                     <!-- content2 -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #889098; text-align:center; line-height: 24px;" st-content="3col-content1">
-                                                            @if ($left->content)
+                                                            @if (isset($left->content))
                                                                 {{$left->content}}
                                                             @endif
                                                         </td>
@@ -71,8 +71,8 @@ $right = $row[2];
                                                     <!-- read more -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cd8;  text-align:center; line-height: 20px;" st-title="3col-readmore1" class="padding-bottom25">
-                                                            @if ($left->link)
-                                                            <a href="{{$left->href}}" style="text-decoration:none; color: #0a8cd8; ">{{$left->link}}</a>
+                                                            @if (isset($left->link))
+                                                                <a href="{{$left->href}}" style="text-decoration:none; color: #0a8cd8; ">{{$left->link}}</a>
                                                             @endif
                                                         </td>
                                                     </tr>
@@ -101,8 +101,8 @@ $right = $row[2];
                                         <!-- image 2 -->
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
-                                                @if ($middle->image)
-                                                    <img src="{{$img}}/{{$middle->image}}" alt="" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                @if (isset($middle->image))
+                                                    <img src="{{$img}}/{{$middle->image}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
                                                 @endif
                                             </td>
                                         </tr>
@@ -120,7 +120,7 @@ $right = $row[2];
                                                     <!-- title2 -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #666666; text-align:center; line-height: 24px;" st-title="3col-title2">
-                                                            @if ($middle->heading)
+                                                            @if (isset($middle->heading))
                                                                 {{$middle->heading}}
                                                             @endif
                                                         </td>
@@ -134,7 +134,7 @@ $right = $row[2];
                                                     <!-- content2 -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #889098; text-align:center; line-height: 24px;" st-content="3col-content2">
-                                                            @if ($middle->content)
+                                                            @if (isset($middle->content))
                                                                 {{$middle->content}}
                                                             @endif
                                                         </td>
@@ -148,7 +148,7 @@ $right = $row[2];
                                                     <!-- read more -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #0a8cd8;  text-align:center; line-height: 20px;" st-title="3col-readmore2" class="padding-bottom25">
-                                                            @if ($middle->link)
+                                                            @if (isset($middle->link))
                                                                 <a href="{{$middle->href}}" style="text-decoration:none; color: #0a8cd8; ">{{$middle->link}}</a>
                                                             @endif
                                                         </td>
@@ -179,8 +179,8 @@ $right = $row[2];
                                         <!-- image3 -->
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
-                                                @if ($right->image)
-                                                    <img src="{{$img}}/{{$right->image}}" alt="{{$right->headline}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                @if (isset($right->image))
+                                                    <img src="{{$img}}/{{$right->image}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
                                                 @endif
                                             </td>
                                         </tr>
@@ -198,7 +198,7 @@ $right = $row[2];
                                                     <!-- title -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #666666; text-align:center; line-height: 24px;" st-title="3col-title3">
-                                                            @if ($right->heading)
+                                                            @if (isset($right->heading))
                                                                 {{$right->heading}}
                                                             @endif
                                                         </td>
@@ -212,7 +212,7 @@ $right = $row[2];
                                                     <!-- content -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #889098; text-align:center; line-height: 24px;" st-content="3col-content3">
-                                                            @if ($right->content)
+                                                            @if (isset($right->content))
                                                                 {{$right->content}}
                                                             @endif
                                                         </td>
@@ -226,7 +226,7 @@ $right = $row[2];
                                                     <!-- read more -->
                                                     <tr>
                                                         <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: {{$color['href']}};  text-align:center; line-height: 20px;" st-title="3col-readmore3">
-                                                            @if ($right->link)
+                                                            @if (isset($right->link))
                                                                 <a href="{{$right->href}}" style="text-decoration:none; color: {{$color['href']}}; ">{{$right->link}}</a>
                                                             @endif
                                                         </td>
@@ -255,3 +255,5 @@ $right = $row[2];
     </tbody>
 </table>
 <!-- end of 3 Columns -->
+@include('email::simples.partials.separator-line')
+@endif

@@ -1,4 +1,4 @@
-@if ($logo)
+@if (isset($logo))
 <!-- Start of header -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="header">
     <tbody>

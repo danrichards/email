@@ -11,10 +11,7 @@
     @include('email::simples.layouts.headers.bravo')
 
     @include('email::simples.partials.masthead')
-
-    @if ($rows)
-        @include('email::simples.partials.excerpt', ['row' => array_pop($rows)])
-    @endif
+    @include('email::simples.partials.excerpt')
 
     <!-- Content -->
     <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="full-text">
@@ -63,7 +60,7 @@
         </tbody>
     </table>
     <!-- End of Content -->
-
+    @include('email::simples.partials.separator-line')
 
     @include('email::simples.layouts.footers.default')
 

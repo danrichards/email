@@ -1,4 +1,4 @@
-@if ($masthead)
+@if (isset($masthead))
 <!-- Start of main-banner -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="banner">
     <tbody>
@@ -34,5 +34,5 @@
     </tbody>
 </table>
 <!-- End of main-banner -->
-@include('email::simples.partials.separator-line')
+@include('email::simples.partials.separator-spacing')
 @endif

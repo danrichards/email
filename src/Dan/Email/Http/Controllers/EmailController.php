@@ -22,6 +22,7 @@ class EmailController extends Controller
     {
         print_r($emailId);
         dd($token);
+        // todo: we're not there yet.
     }
 
     public function basic()
@@ -122,10 +123,5 @@ class EmailController extends Controller
             ]
         ]);
         return view("email::simples.layouts.normal", $data);
-    }
-
-    public function violation()
-    {
-//        return view("simples/sample-violation", $data);
     }
 }

@@ -28,6 +28,7 @@ class EmailController extends Controller
     public function basic()
     {
         $data = array_merge(config('email.globals'), [
+            'base_url' => url(),
             'title' => 'Basic Sample',
             'online' => (object) [
                 'href' => 'http://www.example.com/',
@@ -55,6 +56,7 @@ class EmailController extends Controller
     public function normal()
     {
         $data = array_merge(config('email.globals'), [
+            'base_url' => url(),
             'title' => 'Basic Sample',
             'online' => (object) [
                 'href' => 'http://www.example.com/',

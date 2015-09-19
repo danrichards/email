@@ -6,22 +6,13 @@ use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Dan\Email\Support\History;
 
 abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
-
-    /**
-     * @var string $theme
-     */
-    protected $theme = 'simples';
-
-    /**
-     * @var string $layout
-     */
-    protected $layout = 'normal';
 
     /**
      * @var string $email
@@ -44,14 +35,9 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
     protected $data;
 
     /**
-     * @var array $called Track what has been called so we may set defaults in handle()
+     * @var bool $force
      */
-    protected $called;
-
-    /**
-     * @var Eloquent $record
-     */
-    protected $record;
+    protected $force = false;
 
     /**
      * @param $email
@@ -63,21 +49,8 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
         $this->email = $email;
         $this->subject = $subject;
         $this->name = $name;
-        $this->data = $this->defaults();
-    }
-
-    public function defaults()
-    {
-        $this->data = [
-            'title' => $this->subject,
-            'layout' => $this->layout
-        ];
-        $this->data['user'] = DB::table('users')->where('email', '=', $this->email);
-        if ($this->data['user']) {
-            $this->data['unsubscribe'] = (object) [
-                'href' => url("mail/unsubscribe/{$this->data['user']->id}")
-            ];
-        }
+        $this->configuration();
+        $this->data = $this->consolidation();
     }
 
     /**
@@ -85,61 +58,41 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
      */
     public function handle()
     {
-        $this->log("Sending email.");
+        if ($this->userAcceptsEmails() || $this->force) {
+            $this->log("Sending email.");
+            $record = $this->persist();
 
-        $record = $this->persist($this->data());
+            /**
+             * Setup the email online link last because we need to generate the id and token.
+             */
+            if (config('email.online')) {
+                $this->data['online'] = (object) [
+                    'href' => "mail/view/{$record->id}/{$record->token}",
+                    'link' => config('email.globals.copy.viewOnline')
+                ];
+            } else {
+                $this->data['online'] = false;
+            }
 
-        if ('email.online') {
-            $this->data['online'] = (object) [
-                'href' => "mail/view/{$record->id}/{$record->token}",
-                'link' => config('email.globals.copy.viewOnline')
-            ];
+            /**
+             * Consolidate the record and data (so we have the id and token of the database record)
+             */
+            $data = array_merge($record->getAttributes(), $this->data);
+
+            Mail::send($this->view(), $data, function ($m) {
+                $m->to($this->email, $this->name)->subject($this->subject);
+            });
+        } else {
+            $this->log("User is unsubscribed. No email will sent.", $this->email);
         }
-
-        Mail::send($this->view(), $dataWithDefaults, function ($m) {
-            $m->to($this->email, $this->name)->subject($this->subject);
-        });
-
-        return $this;
     }
 
     /**
-     * Log our email to history.
+     * Where your descendants should call methods like masthead, excerpt, row, and data to setup your email.
      *
-     * @return $this
+     * @return void
      */
-    protected function persist()
-    {
-        $data = $this->data();
-        $record = new History();
-        if (array_key_exists('user', $data) && !is_null($data['user'])) {
-            $record->user_id = DB::table('users')->where('id', '=', $data['user']->id)->value('id');
-        }
-        $record->token = uniqid("em_", true);
-        $record->recipient = $this->email;
-        $record->name = $this->name;
-        $record->subject = $this->job;
-        $record->data = serialize($data);
-        $record->job = get_class($this);
-        $record->view = $this->view();
-
-        $expires = config('email.expires');
-        $record->expires =  $expires ? date("Y-m-d H:i:s", strtotime("-$expires day")) : null;
-
-        $record->save();
-        return $record;
-    }
-
-    /**
-     * Optionally, override this method in your email jobs or we'll extract
-     * $data vars in our view.
-     *
-     * @return stdClass|array
-     */
-    protected function data()
-    {
-        return $this->data;
-    }
+    abstract protected function configuration();
 
     /**
      * Override this method in your Email Jobs
@@ -152,25 +105,77 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
     }
 
     /**
-     * @param $theme
+     * Merge the global vars, defaults from our constructor data, and data set by configuration()
      *
-     * @return $this
+     * @return array
      */
-    protected function theme($theme)
+    protected function consolidation()
     {
-        $this->theme = $theme;
-        return $this;
+        $data = config('email.globals');
+        $data = array_merge($data, [
+            'title' => $this->subject,
+            'user' => DB::table('users')->where('email', '=', $this->email)->first()
+        ]);
+        if (!empty($data['user'])) {
+            $data['unsubscribe'] = (object) [
+                'href' => url("mail/unsubscribe/{$data['user']->id}")
+            ];
+        }
+        return array_merge($data, $this->data);
     }
 
     /**
-     * @param $layout
+     * Log our email to history.
      *
      * @return $this
      */
-    protected function layout($layout)
+    protected function persist()
     {
-        $this->layout = $layout;
-        return $this;
+        $data = $this->data;
+
+        $record = new History();
+        if (array_key_exists('user', $data) && !empty($data['user'])) {
+            $record->user_id = DB::table('users')->where('id', '=', $data['user']->id)->value('id');
+        }
+        $record->token = uniqid("em_", true);
+        $record->recipient = $this->email;
+        $record->name = $this->name;
+        $record->subject = $this->subject;
+        $record->data = serialize($data);
+        $record->job = get_class($this);
+        $record->view = $this->view();
+
+        $expire = config('email.expire');
+        $record->expire =  $expire ? date("Y-m-d H:i:s", strtotime("-$expire day")) : null;
+
+        $record->save();
+        return $record;
+    }
+
+    /**
+     * Fail-safe, if the user has un-subscribed. You should have logic so the
+     * job is never booked in the first place.
+     */
+    protected function userAcceptsEmails()
+    {
+        if (! array_key_exists('user', $this->data)) {
+            return true;
+        }
+        if (empty($this->data['user'])) {
+            return true;
+        }
+        return $this->data['user']->subscribed;
+    }
+
+    /**
+     * Set data manually
+     *
+     * @param $variable
+     * @param $value
+     */
+    public function data($variable, $value)
+    {
+        $this->data[$variable] = $value;
     }
 
     /**
@@ -262,5 +267,15 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
     {
         $this->data['unsubscribe'] = (object) compact('href', 'link');
         return $this;
+    }
+
+    /**
+     * Does this email transcend the subscription status?
+     *
+     * @param $value
+     */
+    public function force($value)
+    {
+        $this->force = $value;
     }
 }

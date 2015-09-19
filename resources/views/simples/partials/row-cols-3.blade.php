@@ -25,7 +25,7 @@ $right = array_key_exists(2, $row) ? $row[2] : false;
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
                                                 @if (isset($left->image))
-                                                    <img src="{{$img}}/{{$left->image}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                    <img src="{{$img}}/assets/media/email/{{$left->image}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
                                                 @endif
                                             </td>
                                         </tr>
@@ -102,7 +102,7 @@ $right = array_key_exists(2, $row) ? $row[2] : false;
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
                                                 @if (isset($middle->image))
-                                                    <img src="{{$img}}/{{$middle->image}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                    <img src="{{$img}}/assets/media/email/{{$middle->image}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
                                                 @endif
                                             </td>
                                         </tr>
@@ -180,7 +180,7 @@ $right = array_key_exists(2, $row) ? $row[2] : false;
                                         <tr>
                                             <td width="100%" align="center" class="devicewidth">
                                                 @if (isset($right->image))
-                                                    <img src="{{$img}}/{{$right->image}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                    <img src="{{$img}}/assets/media/email/{{$right->image}}" border="0" width="50" height="50" style="display:block; border:none; outline:none; text-decoration:none;">
                                                 @endif
                                             </td>
                                         </tr>

@@ -25,7 +25,7 @@
                                                 <div class="imgpop">
                                                     @if ($logo['href'])
                                                     <a target="_blank" href="#">
-                                                        <img src="{{$img}}/{{$logo['image']}}" alt="{{$logo['link']}}" border="0" width="169" height="45" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                        <img src="{{$img}}/assets/media/email/{{$logo['image']}}" alt="{{$logo['link']}}" border="0" width="169" height="45" style="display:block; border:none; outline:none; text-decoration:none;">
                                                     </a>
                                                     @endif
                                                 </div>

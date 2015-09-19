@@ -25,9 +25,9 @@
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;" st-title="fulltext-title">
                                                 @if(isset($row->href))
-                                                    <img src="{{$img}}/{{$row->image}}" />
+                                                    <a href="{{$row->href}}"><img src="{{$img}}/assets/media/email/{{$row->image}}" /></a>
                                                 @endif
-                                                <img src="{{$img}}/{{$row->image}}" />
+                                                <img src="{{$img}}/assets/media/email/{{$row->image}}" />
                                             </td>
                                         </tr>
                                         <!-- End of Image -->

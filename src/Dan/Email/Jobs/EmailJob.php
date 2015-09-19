@@ -67,7 +67,7 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
              */
             if (config('email.online')) {
                 $this->data['online'] = (object) [
-                    'href' => "mail/view/{$record->id}/{$record->token}",
+                    'href' => url("mail/view/{$record->id}/{$record->token}"),
                     'link' => config('email.globals.copy.viewOnline')
                 ];
             } else {
@@ -114,6 +114,7 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
         $data = config('email.globals');
         $data = array_merge($data, [
             'title' => $this->subject,
+            'url' => url(),
             'user' => DB::table('users')->where('email', '=', $this->email)->first()
         ]);
         if (!empty($data['user'])) {

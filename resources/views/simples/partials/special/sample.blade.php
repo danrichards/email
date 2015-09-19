@@ -24,7 +24,7 @@
                                             <!-- Image -->
                                             <tr>
                                                 <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;" st-title="fulltext-title">
-                                                    <img src="{{$img}}/assets/media/email/{{$data->image}}" alt="{{$data->heading}}" />
+                                                    <img src="{{$cdn}}{{$data->image}}" alt="{{$data->heading}}" />
                                                 </td>
                                             </tr>
                                             <!-- End of Image -->

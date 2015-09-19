@@ -31,18 +31,18 @@
                                     </table>
                                     @endif
                                     @if (isset($buttons))
-                                    <table width="100" align="right" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                    <table align="right" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
                                         <tbody>
                                         <tr>
                                             @foreach ($buttons as $button)
                                             <td width="30" height="30" align="right">
                                                 <div class="imgpop">
                                                     <a target="_blank" href="{{$button['href']}}">
-                                                        <img src="{{$img}}/assets/media/email/{{$button['image']}}" alt="" border="0" width="30" height="30" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                        <img src="{{$cdn}}{{$button['image']}}" alt="" border="0" width="30" height="30" style="display:block; border:none; outline:none; text-decoration:none;">
                                                     </a>
                                                 </div>
                                             </td>
-                                            <td align="left" width="20" style="font-size:1px; line-height:1px;">&nbsp;</td>
+                                            <td width="10" style="font-size:1px; line-height:1px;">&nbsp;</td>
                                             @endforeach
                                         </tr>
                                         </tbody>

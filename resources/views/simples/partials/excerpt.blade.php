@@ -42,7 +42,7 @@ if (isset($rows)) {
                                         <!-- content -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #666666; text-align:center; line-height: 30px;" st-content="fulltext-content">
-                                                {{$excerpt->content}}
+                                                {!! $excerpt->content !!}}
                                             </td>
                                         </tr>
 

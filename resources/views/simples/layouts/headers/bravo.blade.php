@@ -23,9 +23,13 @@
                                         <tr>
                                             <td width="169" height="45" align="center">
                                                 <div class="imgpop">
-                                                    @if ($logo['href'])
-                                                    <a target="_blank" href="#">
-                                                        <img src="{{$img}}/assets/media/email/{{$logo['image']}}" alt="{{$logo['link']}}" border="0" width="169" height="45" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                    @if (array_key_exists('href', $logo))
+                                                    <a target="_blank" href="{{$logo['href']}}">
+                                                        <img src="{{$cdn}}{{$logo['image']}}" alt="{{$logo['link']}}" border="0" width="169" height="45" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                    </a>
+                                                    @else
+                                                    <a target="_blank" href="{{$url}}">
+                                                        <img src="{{$cdn}}{{$logo['image']}}" alt="{{$logo['link']}}" border="0" width="169" height="45" style="display:block; border:none; outline:none; text-decoration:none;">
                                                     </a>
                                                     @endif
                                                 </div>

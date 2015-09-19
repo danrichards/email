@@ -1,3 +1,4 @@
+@if (isset($unsubscribe))
 <!-- Start of Postfooter -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="postfooter" >
     <tbody>
@@ -32,3 +33,4 @@
     </tbody>
 </table>
 <!-- End of postfooter -->
+@endif

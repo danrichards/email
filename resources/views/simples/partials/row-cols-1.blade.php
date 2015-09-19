@@ -25,9 +25,10 @@
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;" st-title="fulltext-title">
                                                 @if(isset($row->href))
-                                                    <a href="{{$row->href}}"><img src="{{$img}}/assets/media/email/{{$row->image}}" /></a>
+                                                    <a href="{{$row->href}}"><img src="{{$cdn}}{{$row->image}}" /></a>
+                                                @else
+                                                    <img src="{{$cdn}}{{$row->image}}" />
                                                 @endif
-                                                <img src="{{$img}}/assets/media/email/{{$row->image}}" />
                                             </td>
                                         </tr>
                                         <!-- End of Image -->
@@ -35,6 +36,11 @@
                                     </table>
                                 </td>
                             </tr>
+                            <!-- Spacing -->
+                            <tr>
+                                <td height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
+                            </tr>
+                            <!-- Spacing -->
                             @endif
                             <!-- Optional image -->
                             @if (isset($row->heading) || isset($row->content))
@@ -60,7 +66,7 @@
                                         <!-- content -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #666666; text-align:center; line-height: 30px;" st-content="fulltext-content">
-                                                {{$row->content}}
+                                                {!! $row->content !!}
                                             </td>
                                         </tr>
                                         <!-- End of content -->

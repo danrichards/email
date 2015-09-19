@@ -34,7 +34,7 @@ $right = array_key_exists(1, $row) ? $row[1] : false;
                                                     <tr>
                                                         <td width="290" height="160" align="center" class="devicewidth">
                                                             @if (isset($left->image))
-                                                                <img src="{{$img}}/assets/media/email/{{$left->image}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
+                                                                <img src="{{$cdn}}{{$left->image}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
                                                             @endif
                                                         </td>
                                                     </tr>
@@ -59,7 +59,7 @@ $right = array_key_exists(1, $row) ? $row[1] : false;
                                                                 <tr>
                                                                     <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; line-height:24px; color: #666666; text-align:center;" st-conteent="2colcontent1">
                                                                         @if (isset($left->content))
-                                                                            {{$left->content}}
+                                                                            {!! $left->content !!}
                                                                         @endif
                                                                     </td>
                                                                 </tr>
@@ -106,7 +106,7 @@ $right = array_key_exists(1, $row) ? $row[1] : false;
                                                     <tr>
                                                         <td width="290" height="160" align="center" class="devicewidth">
                                                             @if (isset($right->image))
-                                                                <img src="{{$img}}/assets/media/email/{{$right->image}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
+                                                                <img src="{{$cdn}}{{$right->image}}" border="0" width="290" height="160" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
                                                             @endif
                                                         </td>
                                                     </tr>
@@ -131,7 +131,7 @@ $right = array_key_exists(1, $row) ? $row[1] : false;
                                                                 <tr>
                                                                     <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; line-height:24px; color: #666666; text-align:center;" st-content="2colcontent2">
                                                                         @if (isset($right->content))
-                                                                            {{$right->content}}
+                                                                            {!! $right->content !!}
                                                                         @endif
                                                                     </td>
                                                                 </tr>

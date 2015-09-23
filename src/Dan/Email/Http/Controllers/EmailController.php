@@ -4,12 +4,21 @@ namespace Dan\Email\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Dan\Email\Support\History;
 
 class EmailController extends Controller
 {
-    function __construct()
-    {
+    /**
+     * @var History
+     */
+    protected $history;
 
+    /**
+     * @param History $history
+     */
+    function __construct(History $history)
+    {
+        $this->history = $history;
     }
 
     /**
@@ -17,12 +26,25 @@ class EmailController extends Controller
      *
      * @param $emailId
      * @param $token
+     *
+     * @return \Illuminate\View\View
      */
-    public function emails($emailId, $token)
+    public function view($emailId, $token)
     {
-        print_r($emailId);
-        dd($token);
-        // todo: we're not there yet.
+        $email = $this->history->find($emailId);
+        if ($email) {
+            if ($token == $email->token) {
+                if (date("Y-m-d") < $email->expire) {
+                    return view($email->view, unserialize($email->data));
+                } else {
+                    die("We're sorry, that message has expired.");
+                }
+            } else {
+                die("Bad token.");
+            }
+        } else {
+            die("Email not found, it may have expired and been removed from our system.");
+        }
     }
 
     public function basic()

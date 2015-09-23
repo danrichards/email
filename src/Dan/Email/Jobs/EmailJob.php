@@ -147,7 +147,7 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
         $record->view = $this->view();
 
         $expire = config('email.expire');
-        $record->expire =  $expire ? date("Y-m-d H:i:s", strtotime("-$expire day")) : null;
+        $record->expire =  $expire ? date("Y-m-d H:i:s", strtotime("+$expire day")) : null;
 
         $record->save();
         return $record;

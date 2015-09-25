@@ -119,7 +119,8 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
         ]);
         if (!empty($data['user'])) {
             $data['unsubscribe'] = (object) [
-                'href' => url("mail/unsubscribe/{$data['user']->id}")
+                'href' => url("mail/unsubscribe/{$data['user']->id}"),
+                'link' => 'Unsubscribe'
             ];
         }
         return array_merge($data, $this->data);

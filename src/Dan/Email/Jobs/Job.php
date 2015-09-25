@@ -3,7 +3,7 @@
 namespace Dan\Email\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Dan\Core\Support\Loggable;
+use Dan\Core\Support\Traits\Loggable;
 
 abstract class Job
 {

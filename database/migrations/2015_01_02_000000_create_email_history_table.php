@@ -19,7 +19,7 @@ class CreateEmailHistoryTable extends Migration
             $table->integer('user_id')->nullable();
             $table->string('token', 23);
             $table->string('recipient', 50);
-            $table->string('name', 255);
+            $table->string('name', 255)->nullable();
             $table->string('subject', 255);
             $table->mediumText('data')->nullable();
             $table->string('job', 255);

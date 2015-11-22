@@ -28,7 +28,7 @@ basic data conventions for quickly generating simple and clean looking emails.
 
 Usage in your projects
 
-> composer require dan/core:dev-master
+> composer require dan/email:dev-master
 
 Usage in Laravel
 

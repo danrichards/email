@@ -1,0 +1,26 @@
+{
+  "name": "dan/email",
+  "description": "A simple email implementation I use in many of my Laravel ~5.1 packages.",
+  "license": "MIT",
+  "keywords": ["laravel", "email", "mailgun", "jobs", "queue"],
+  "authors": [
+    {
+      "name": "Dan Richards",
+      "email": "danrichardsri@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "laravel/framework": "~5.1",
+    "dan/core": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dan\\Email\\": "src/Dan/Email/"
+    }
+  },
+  "minimum-stability": "dev"
+}

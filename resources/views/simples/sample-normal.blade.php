@@ -1,0 +1,1 @@
+@extends('email::simples.layouts.normal')

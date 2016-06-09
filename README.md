@@ -40,7 +40,7 @@ also some views and assets to get you started. (In Laravel's `config/app.php`
 
 Publishing `assets`, `config`, `migrations` and `views`.
 
-> php artisan vendor:publish --provider="Dan\Email\Support\EmailServiceProvider" --tag="views"
+> php artisan vendor:publish --provider="Dan\Email\Providers\EmailServiceProvider" --tag="views"
 
 
 ### Usage <a name="usage"></a>

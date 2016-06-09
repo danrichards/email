@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Dan\\Email\\": "src/Dan/Email/"
+      "Dan\\Email\\": "src/"
     }
   },
   "minimum-stability": "dev"

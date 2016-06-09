@@ -60,7 +60,7 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
     {
         if ($this->userAcceptsEmails() || $this->force) {
             $this->log("Sending email.");
-            $record = $this->persist();
+            $record = $this->saveEmailHistory();
 
             /**
              * Setup the email online link last because we need to generate the id and token.
@@ -131,12 +131,12 @@ abstract class EmailJob extends Job implements SelfHandling, ShouldQueue
      *
      * @return $this
      */
-    protected function persist()
+    protected function saveEmailHistory()
     {
         $data = $this->data;
 
         $record = new History();
-        if (array_key_exists('user', $data) && !empty($data['user'])) {
+        if (array_key_exists('user', $data) && ! empty($data['user'])) {
             $record->user_id = DB::table('users')->where('id', '=', $data['user']->id)->value('id');
         }
         $record->token = uniqid("em_", true);

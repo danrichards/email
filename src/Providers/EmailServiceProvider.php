@@ -17,22 +17,22 @@ class EmailServiceProvider extends ServiceProvider
             require __DIR__ . '/../Http/routes.php';
         }
 
-        $this->loadViewsFrom(__DIR__.'/../../../../resources/views', 'email');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'email');
 
         $this->publishes([
-            __DIR__.'/../../../../config/email.php' => config_path('email.php')
+            __DIR__.'/../../config/email.php' => config_path('email.php')
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../../../../database/migrations/' => database_path('migrations')
+            __DIR__.'/.././database/migrations/' => database_path('migrations')
         ], 'migrations');
 
         $this->publishes([
-            __DIR__.'/../../../../resources/views/' => base_path('resources/views/vendor/email'),
+            __DIR__.'/../../resources/views/' => base_path('resources/views/vendor/email'),
         ], 'views');
 
         $this->publishes([
-            __DIR__.'/../../../../public/' => base_path('public'),
+            __DIR__.'/../../public/' => base_path('public'),
         ], 'assets');
     }
 
